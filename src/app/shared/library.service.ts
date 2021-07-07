@@ -8,7 +8,8 @@ export enum URLTYPE {
   PUBLISHER,
   AUTHORBOOK,
   BORROWER,
-  BOOK
+  BOOK,
+  LOGOUT,
 };
 
 @Injectable({
@@ -48,6 +49,9 @@ export class LibraryService {
       case URLTYPE.LOGIN: 
         url = this.BASE_URL_API + '/auth/login';    
         break;
+      case URLTYPE.LOGOUT: 
+        url = this.BASE_URL_API + '/auth/logout';    
+        break;
     
       default:
         break;
@@ -65,6 +69,12 @@ export class LibraryService {
     return this.httpClient.post(this.getUrl(urlType), body, this.httpOptions).pipe(
       catchError(this.handleError)
     );
+  }
+
+  logout(urlType: URLTYPE, body: any): Observable<any> {
+    return this.httpClient.post(this.getUrl(urlType), body, this.httpOptions).pipe(
+      catchError(this.handleError)
+    )
   }
 
   private handleError(error: HttpErrorResponse) {

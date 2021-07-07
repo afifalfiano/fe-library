@@ -46,8 +46,9 @@ export class LoginComponent implements OnInit {
   doLogin(body: any) {
     this.librarySvc.login(URLTYPE.LOGIN, body).subscribe((response) => {
       console.log(response);
-      if(response['tokaccess_tokenen'] !== null) {
+      if(response['access_token'] !== null) {
         localStorage.setItem('access_token', JSON.stringify(response['access_token']));
+        localStorage.setItem('user', JSON.stringify(response['user']));
       } else {
         console.log('Check your credentials');
       }

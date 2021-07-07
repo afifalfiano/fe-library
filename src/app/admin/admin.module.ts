@@ -10,6 +10,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
+import { SharedMaterialModule } from '../shared/sharedmaterial.module';
 
 
 @NgModule({
@@ -17,12 +18,7 @@ import { LayoutModule } from '@angular/cdk/layout';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
-    MatIconModule,
-    MatButtonModule,
-    LayoutModule
+    SharedMaterialModule
   ]
 })
 export class AdminModule { }
