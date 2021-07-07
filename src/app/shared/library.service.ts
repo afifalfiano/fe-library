@@ -19,6 +19,8 @@ export class LibraryService {
   private httpOptions = {headers: 
     new HttpHeaders({
       'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Accept': '*/*'
     })}
   constructor(
     private httpClient: HttpClient
@@ -44,7 +46,7 @@ export class LibraryService {
         url = this.BASE_URL_API + '/borrower';    
         break;
       case URLTYPE.LOGIN: 
-        url = this.BASE_URL_API + '/login';    
+        url = this.BASE_URL_API + '/auth/login';    
         break;
     
       default:
@@ -55,6 +57,12 @@ export class LibraryService {
 
   list(urlType: URLTYPE, params?: any): Observable<any> {
     return this.httpClient.get(this.getUrl(urlType), this.httpOptions).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  login(urlType: URLTYPE, body: any): Observable<any> {
+    return this.httpClient.post(this.getUrl(urlType), body, this.httpOptions).pipe(
       catchError(this.handleError)
     );
   }

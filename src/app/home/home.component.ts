@@ -9,10 +9,6 @@ import { LibraryService, URLTYPE } from '../shared/library.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  httpOptions = {headers: 
-    new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
-    })}
   constructor(
     private libraryService: LibraryService
   ) { }
