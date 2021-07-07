@@ -10,4 +10,7 @@ import { LibraryService } from './library.service';
 })
 export class AuthService {
   
+  getToken() {
+    return !!localStorage.getItem("access_token");
+  }
 }

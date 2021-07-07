@@ -24,7 +24,7 @@ import { SharedMaterialModule } from './shared/sharedmaterial.module';
   ],
   providers: [
   {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
-  { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true }
+  { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

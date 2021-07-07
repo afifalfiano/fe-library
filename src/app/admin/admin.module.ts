@@ -11,10 +11,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
 import { SharedMaterialModule } from '../shared/sharedmaterial.module';
+import { AdminBookComponent } from './admin-book/admin-book.component';
+import { AdminPublisherComponent } from './admin-publisher/admin-publisher.component';
+import { AdminAuthorBookComponent } from './admin-author-book/admin-author-book.component';
+import { AdminMemberComponent } from './admin-member/admin-member.component';
 
 
 @NgModule({
-  declarations: [AdminComponent, AdminDashboardComponent],
+  declarations: [AdminComponent, AdminDashboardComponent, AdminBookComponent, AdminPublisherComponent, AdminAuthorBookComponent, AdminMemberComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

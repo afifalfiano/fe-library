@@ -1,14 +1,30 @@
-<mat-sidenav-container class="sidenav-container">
+<router-outlet *ngIf="user === null"></router-outlet>
+<mat-sidenav-container class="sidenav-container" *ngIf="user !== null">
   <mat-sidenav #drawer class="sidenav" fixedInViewport
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
-    </mat-nav-list>
+    <div *ngIf="user !== null; else defaultMenu">
+    <div [ngSwitch]="user.roles">
+      <div *ngSwitchCase="'admin'">
+        <mat-nav-list>
+          <a mat-list-item [routerLink]="['/admin/dashboard']" routerLinkActive="router-link-active">Dashboard</a>
+          <a mat-list-item [routerLink]="['/admin/book']" routerLinkActive="router-link-active">Buku</a>
+          <a mat-list-item [routerLink]="['/admin/author-book']" routerLinkActive="router-link-active">Pengarang</a>
+          <a mat-list-item [routerLink]="['/admin/publisher']" routerLinkActive="router-link-active">Penerbit</a>
+          <a mat-list-item [routerLink]="['/admin/member']" routerLinkActive="router-link-active">Anggota</a>
+        </mat-nav-list>
+      </div>
+      <!-- < -->
+      </div>
+    </div>
+    <ng-template #defaultMenu>
+      <mat-nav-list>
+        <a mat-list-item href="#">Link 1</a>
+        <a mat-list-item href="#">Link 2</a>
+      </mat-nav-list>
+    </ng-template>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
@@ -20,10 +36,12 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>Library</span>
+      <div class="bar">
+      <div>Library</div>
       <button mat-button mat-raised-button [matMenuTriggerFor]="account">
         <mat-icon aria-label="person" fontIcon="20">person</mat-icon>
       </button>
+      </div>
     </mat-toolbar>
     <mat-menu #account="matMenu">
       <button mat-menu-item>Profile</button>

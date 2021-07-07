@@ -1,6 +1,7 @@
 import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LibraryService, URLTYPE } from 'src/app/shared/library.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
   hide = true;
   constructor(
     private formBuilder: FormBuilder,
-    private librarySvc: LibraryService
+    private librarySvc: LibraryService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -49,6 +51,8 @@ export class LoginComponent implements OnInit {
       if(response['access_token'] !== null) {
         localStorage.setItem('access_token', JSON.stringify(response['access_token']));
         localStorage.setItem('user', JSON.stringify(response['user']));
+        location.reload();
+        this.router.navigateByUrl('/home');
       } else {
         console.log('Check your credentials');
       }
