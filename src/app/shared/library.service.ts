@@ -65,6 +65,12 @@ export class LibraryService {
     );
   }
 
+  listWithGuard(urlType: URLTYPE, params?: any): Observable<any> {
+    return this.httpClient.get(this.getUrl(urlType) + params, this.httpOptions).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   login(urlType: URLTYPE, body: any): Observable<any> {
     return this.httpClient.post(this.getUrl(urlType), body, this.httpOptions).pipe(
       catchError(this.handleError)

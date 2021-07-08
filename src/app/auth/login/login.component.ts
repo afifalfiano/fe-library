@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private librarySvc: LibraryService,
-    private router: Router
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
     this.librarySvc.login(URLTYPE.LOGIN, body).subscribe((response) => {
       console.log(response);
       if(response['access_token'] !== null) {
-        localStorage.setItem('access_token', JSON.stringify(response['access_token']));
+        localStorage.setItem('access_token', response['access_token']);
         localStorage.setItem('user', JSON.stringify(response['user']));
         location.reload();
         this.router.navigateByUrl('/home');

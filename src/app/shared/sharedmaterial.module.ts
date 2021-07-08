@@ -43,6 +43,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 import { LayoutModule } from '@angular/cdk/layout';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
@@ -69,6 +70,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatGridListModule,
     MatIconModule,
     MatInputModule,
+    NgxSkeletonLoaderModule,
     MatListModule,
     MatMenuModule,
     MatNativeDateModule,

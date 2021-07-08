@@ -1,3 +1,4 @@
+<mat-progress-bar mode="indeterminate" color="accent" *ngIf="dataSource.data.length === 0"></mat-progress-bar>
 <div class="grid-container">
     <h1 class="mat-h1">Penerbit</h1>
     <mat-grid-list cols="1" rowHeight="350px">
@@ -11,21 +12,45 @@
           </ng-container>
       
           <!-- Name Column -->
-          <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef> Name </th>
-            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          <ng-container matColumnDef="nama">
+            <th mat-header-cell *matHeaderCellDef> Nama </th>
+            <td mat-cell *matCellDef="let element"> {{element.nama}} </td>
           </ng-container>
       
           <!-- Weight Column -->
-          <ng-container matColumnDef="weight">
-            <th mat-header-cell *matHeaderCellDef> Weight </th>
-            <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+          <ng-container matColumnDef="buku">
+            <th mat-header-cell *matHeaderCellDef> Buku </th>
+            <td mat-cell *matCellDef="let element"> {{element.buku}} </td>
           </ng-container>
       
           <!-- Symbol Column -->
-          <ng-container matColumnDef="symbol">
-            <th mat-header-cell *matHeaderCellDef> Symbol </th>
-            <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+          <ng-container matColumnDef="user_input">
+            <th mat-header-cell *matHeaderCellDef> User Input </th>
+            <td mat-cell *matCellDef="let element"> {{element.user_input}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="tgl_input">
+            <th mat-header-cell *matHeaderCellDef> Tgl Input </th>
+            <td mat-cell *matCellDef="let element"> {{element.tgl_input}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="aksi">
+            <th mat-header-cell *matHeaderCellDef> Aksi </th>
+            <td mat-cell *matCellDef="let element"> 
+              <div class="action">
+              <button mat-button>
+                <mat-icon aria-label="remove_red_eye" fontIcon="20">remove_red_eye</mat-icon>
+              </button>
+              <button mat-button>
+                <mat-icon aria-label="edit" fontIcon="20">edit</mat-icon>
+              </button>
+              <button mat-button>
+                <mat-icon aria-label="delete" fontIcon="20">delete</mat-icon>
+              </button>
+              </div>
+            </td>
           </ng-container>
       
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
