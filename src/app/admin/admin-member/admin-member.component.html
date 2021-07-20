@@ -1,1 +1,96 @@
-<p>admin-member works!</p>
+<mat-progress-bar mode="indeterminate" color="accent" *ngIf="dataSource.data.length === 0"></mat-progress-bar>
+<div class="grid-container">
+    <div class="add-data">
+        <h1 class="mat-h1">Anggota</h1>
+        <button mat-flat-button color="primary" (click)="onBtnClickAddNewUser()">Tambah</button>
+    </div>
+    <mat-grid-list cols="1" rowHeight="350px">
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
+      
+          <!-- Position Column -->
+          <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+          </ng-container>
+      
+          <!-- Name Column -->
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+          </ng-container>
+      
+          <!-- Weight Column -->
+          <ng-container matColumnDef="nama">
+            <th mat-header-cell *matHeaderCellDef> Nama </th>
+            <td mat-cell *matCellDef="let element"> {{element.nama}} </td>
+          </ng-container>
+      
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="jenis_kelamin">
+            <th mat-header-cell *matHeaderCellDef> Jenis Kelamin </th>
+            <td mat-cell *matCellDef="let element"> {{element.jenis_kelamin}} </td>
+          </ng-container>
+      
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="tgl_lahir">
+            <th mat-header-cell *matHeaderCellDef> Tgl Lahir </th>
+            <td mat-cell *matCellDef="let element"> {{element.tgl_lahir}} </td>
+          </ng-container>
+      
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="alamat">
+            <th mat-header-cell *matHeaderCellDef> Alamat </th>
+            <td mat-cell *matCellDef="let element"> {{element.alamat}} </td>
+          </ng-container>
+      
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="kontak">
+            <th mat-header-cell *matHeaderCellDef> Kontak </th>
+            <td mat-cell *matCellDef="let element"> {{element.kontak}} </td>
+          </ng-container>
+      
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="roles">
+            <th mat-header-cell *matHeaderCellDef> Role </th>
+            <td mat-cell *matCellDef="let element"> {{element.roles}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="user_input">
+            <th mat-header-cell *matHeaderCellDef> User Input </th>
+            <td mat-cell *matCellDef="let element"> {{element.user_input}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="tgl_input">
+            <th mat-header-cell *matHeaderCellDef> Tgl Input </th>
+            <td mat-cell *matCellDef="let element"> {{element.tgl_input}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="aksi">
+            <th mat-header-cell *matHeaderCellDef> Aksi </th>
+            <td mat-cell *matCellDef="let element"> 
+              <div class="action">
+              <button mat-button (click)="onBtnViewDetail(element)">
+                <mat-icon aria-label="remove_red_eye" fontIcon="20">remove_red_eye</mat-icon>
+              </button>
+              <button mat-button>
+                <mat-icon aria-label="edit" fontIcon="20">edit</mat-icon>
+              </button>
+              <button mat-button>
+                <mat-icon aria-label="delete" fontIcon="20">delete</mat-icon>
+              </button>
+              </div>
+            </td>
+          </ng-container>
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+      </div>
+    </mat-grid-list>
+</div>

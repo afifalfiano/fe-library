@@ -1,6 +1,9 @@
 <mat-progress-bar mode="indeterminate" color="accent" *ngIf="dataSource.data.length === 0"></mat-progress-bar>
 <div class="grid-container">
-    <h1 class="mat-h1">Penerbit</h1>
+    <div class="add-data">
+      <h1 class="mat-h1">Penerbit</h1>
+      <button mat-flat-button color="primary" (click)="onBtnClickAddNewPublisher()">Tambah</button>
+    </div>
     <mat-grid-list cols="1" rowHeight="350px">
     <div class="mat-elevation-z8">
         <table mat-table [dataSource]="dataSource">

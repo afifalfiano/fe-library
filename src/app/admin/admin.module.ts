@@ -15,10 +15,14 @@ import { AdminBookComponent } from './admin-book/admin-book.component';
 import { AdminPublisherComponent } from './admin-publisher/admin-publisher.component';
 import { AdminAuthorBookComponent } from './admin-author-book/admin-author-book.component';
 import { AdminMemberComponent } from './admin-member/admin-member.component';
+import { MemberFormComponent } from './admin-member/member-form/member-form.component';
+import { MemberViewComponent } from './admin-member/member-view/member-view.component';
+import { PublisherFormComponent } from './admin-publisher/publisher-form/publisher-form.component';
+import { PublisherViewComponent } from './admin-publisher/publisher-view/publisher-view.component';
 
 
 @NgModule({
-  declarations: [AdminComponent, AdminDashboardComponent, AdminBookComponent, AdminPublisherComponent, AdminAuthorBookComponent, AdminMemberComponent],
+  declarations: [AdminComponent, AdminDashboardComponent, AdminBookComponent, AdminPublisherComponent, AdminAuthorBookComponent, AdminMemberComponent, MemberFormComponent, MemberViewComponent, PublisherFormComponent, PublisherViewComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

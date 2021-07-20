@@ -52,4 +52,8 @@ export class AdminPublisherComponent implements OnInit {
       this.showTable = true;
     });
   }
-}
+
+  onBtnClickAddNewPublisher() {
+    
+  }
+} 
