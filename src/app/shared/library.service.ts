@@ -65,6 +65,24 @@ export class LibraryService {
     );
   }
 
+  create(urlType: URLTYPE, body: any, params ?: any): Observable<any> {
+    return this.httpClient.post(this.getUrl(urlType) + params, body , this.httpOptions).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  update(urlType: URLTYPE, body: any, params ?: any): Observable<any> {
+    return this.httpClient.put(this.getUrl(urlType) + params, body , this.httpOptions).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  delete(urlType: URLTYPE,  body?: any, params ?: any): Observable<any> {
+    return this.httpClient.delete(this.getUrl(urlType) + params, this.httpOptions).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   listWithGuard(urlType: URLTYPE, params?: any): Observable<any> {
     return this.httpClient.get(this.getUrl(urlType) + params, this.httpOptions).pipe(
       catchError(this.handleError)

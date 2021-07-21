@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
+import { DeleteDialogComponent } from 'src/app/shared/delete-dialog/delete-dialog.component';
 import { LibraryService, URLTYPE } from 'src/app/shared/library.service';
 import { MemberViewComponent } from './member-view/member-view.component';
 
@@ -13,7 +15,7 @@ export interface Member {
   jenis_kelamin: any;
   tgl_lahir: any;
   alamat: string;
-  kontak: number;
+  kontak: string;
   roles: string;
   tgl_input: any;
   user_input: string;
@@ -32,7 +34,8 @@ export class AdminMemberComponent implements OnInit {
   showTable = false;
   constructor(
     private librarySvc: LibraryService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router
   ) {}
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -69,7 +72,38 @@ export class AdminMemberComponent implements OnInit {
   }
 
   onBtnClickAddNewUser() {
+    this.router.navigateByUrl(this.router.url + '/create');
+  }
 
+  onBtnDelete($event) {
+    const dialogRef = this.dialog.open(DeleteDialogComponent, {
+      width: '450px',
+      data: $event,
+      position: {
+        top: '100px'
+      },
+      autoFocus: true,
+    });
+
+    dialogRef.afterClosed().subscribe(response => {
+      console.log('The dialog was closed');
+      if (response) {
+        this.doDelete($event);
+      }
+      console.log(response);
+    });
+  }
+
+  doDelete(body) {
+    const param = `/${body.id}`;
+    this.librarySvc.delete(URLTYPE.MEMBER, body, param).subscribe((response) => {
+      console.log(response);
+    });
+  }
+
+  onBtnUpdate($event) {
+    console.log($event);
+    this.router.navigateByUrl(this.router.url + '/update', {state: {data: $event}});
   }
 
   onBtnViewDetail($event): void {

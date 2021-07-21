@@ -1,1 +1,63 @@
-<p>member-form works!</p>
+<form (ngSubmit)="onSubmit()" [formGroup]="formMember">
+    <div class="example-container">
+        <mat-form-field>
+          <mat-label>Enter your email</mat-label>
+          <input matInput placeholder="name@example.com" formControlName="email" required>
+          <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+        </mat-form-field>
+    </div>
+    <div class="example-container">
+        <mat-form-field>
+            <mat-label>Nama</mat-label>
+            <input matInput placeholder="Nama" formControlName="nama">
+          </mat-form-field>
+    </div>
+    <div class="example-container">
+        <mat-form-field>
+            <mat-label>Jenis kelamin</mat-label>
+            <mat-select formControlName="jenis_kelamin">
+              <mat-option *ngFor="let item of jenisKelamin" value="{{item.value}}">{{item.label}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+    </div>
+    <div class="example-container">
+        <mat-form-field>
+            <mat-label>Tanggal lahir</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="tgl_lahir">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+    </div>
+    <div class="example-container">
+        <mat-form-field>
+            <mat-label>Alamat</mat-label>
+            <textarea matInput formControlName="alamat"></textarea>
+          </mat-form-field>
+    </div>
+    <div class="example-container">
+        <mat-form-field>
+            <mat-label>Kontak (Mobile)</mat-label>
+            <input matInput placeholder="Nomer Telelpon" formControlName="kontak">
+          </mat-form-field>
+    </div>
+    <div class="example-container">
+        <mat-form-field>
+            <mat-label>Roles</mat-label>
+            <mat-select formControlName="roles">
+              <mat-option *ngFor="let item of roles" value="{{item.value}}">{{item.label}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+    </div>
+    <div class="example-container">
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+    </div>
+    <div>
+        <button mat-flat-button color="primary">Simpan</button>
+    </div>
+</form>

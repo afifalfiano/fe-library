@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>Peringatan</h2>
+<mat-dialog-content class="mat-typography">
+  <h3>Apakah anda ingin menghapus data ini?</h3>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-flat-button color="secondary" [mat-dialog-close]="false">Batalkan</button>
+  <button mat-flat-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Ya, Hapus</button>
+</mat-dialog-actions>

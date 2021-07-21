@@ -10,14 +10,14 @@ import {CdkTreeModule} from '@angular/cdk/tree';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
-import {MatButtonModule} from '@angular/material/button';
+import {MatButton, MatButtonModule} from '@angular/material/button';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatCardModule} from '@angular/material/card';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatDialogModule} from '@angular/material/dialog';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatGridListModule} from '@angular/material/grid-list';
@@ -45,6 +45,8 @@ import {OverlayModule} from '@angular/cdk/overlay';
 import { LayoutModule } from '@angular/cdk/layout';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 
 @NgModule({
   exports: [
@@ -112,6 +114,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
-  ]
+    ReactiveFormsModule,
+    FormsModule,
+  ],
+  imports: [MatDialogModule, MatButtonModule],
+  declarations: [DeleteDialogComponent],
 })
 export class SharedMaterialModule {}
